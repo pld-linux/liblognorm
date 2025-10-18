@@ -8,17 +8,18 @@ Summary:	Fast samples-based log normalization library
 Summary(pl.UTF-8):	Szybka biblioteka do normalizowania logów oparta na próbkach
 Name:		liblognorm
 Version:	2.0.6
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.liblognorm.com/files/download/%{name}-%{version}.tar.gz
 # Source0-md5:	9b6b6b5f76fafbc853c65aad69d5d33b
+Patch0:		default-doc-lang.patch
 URL:		https://www.liblognorm.com/
-%{?with_apidocs:BuildRequires:	sphinx-pdg}
 BuildRequires:	libestr-devel
 BuildRequires:	libfastjson-devel
 BuildRequires:	pcre-devel
 BuildRequires:	pkgconfig
+%{?with_apidocs:BuildRequires:	sphinx-pdg}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,6 +68,7 @@ Dokumentacja API biblioteki liblognorm.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
 %configure \
@@ -100,12 +102,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/lognormalizer
-%attr(755,root,root) %{_libdir}/liblognorm.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblognorm.so.5
+%{_libdir}/liblognorm.so.*.*.*
+%ghost %{_libdir}/liblognorm.so.5
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/liblognorm.so
+%{_libdir}/liblognorm.so
 %{_includedir}/liblognorm
 %{_pkgconfigdir}/lognorm.pc
 
