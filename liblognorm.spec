@@ -8,7 +8,7 @@ Summary:	Fast samples-based log normalization library
 Summary(pl.UTF-8):	Szybka biblioteka do normalizowania logów oparta na próbkach
 Name:		liblognorm
 Version:	2.0.6
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.liblognorm.com/files/download/%{name}-%{version}.tar.gz
